@@ -36,3 +36,14 @@ body {
     font-weight: 600;
     font-size: 20px;
 }
+
+
+/* create recipe */
+.recipe_container {
+    display: flex;
+    justify-content: center;
+}
+
+.recipe-form {
+    margin-top: 50px;
+}
