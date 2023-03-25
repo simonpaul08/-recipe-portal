@@ -7,13 +7,12 @@ import { ProtectedRoutes } from './protected/ProtectedRoutes'
 
 function App() {
 
-
   return (
     <>
       <Routes>
         <Route path='/auth' element={<Auth />} />
+        <Route exact path='/' element={<Home />} />
         <Route element={<ProtectedRoutes />}>
-          <Route exact path='/' element={<Home />} />
           <Route path='/createRecipe' element={<CreateRecipe />} />
         </Route>
       </Routes>

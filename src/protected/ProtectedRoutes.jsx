@@ -9,7 +9,7 @@ export const ProtectedRoutes = () => {
     console.log(flag)
 
     return (
-       flag ? <Outlet /> : <Navigate to="/auth" />
+       flag ? <Outlet /> : <Navigate to="/" />
     )
 }
 

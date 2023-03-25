@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
+import Loader from '../components/Loader'
 import Navbar from '../components/Navbar'
 import RecipeCard from '../components/RecipeCard'
 
@@ -19,6 +20,8 @@ const Home = () => {
 
     fetchRecipes()
   }, [])
+
+  if(recipes.length === 0) return <Loader />
 
   return (
     <div className='home'>
