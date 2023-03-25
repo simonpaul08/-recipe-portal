@@ -73,7 +73,7 @@ const CreateRecipe = () => {
             {recipe.ingredients.map((ingredient, index) => {
                 return (
                     <div className="mb-2" key={index}>
-                        <input type="text" name="ingredient"           className="form-control"
+                        <input type="text" name="ingredient" className="form-control"
                         placeholder="Ingredient"
                         value={ingredient}
                         onChange={(e) => handleIngredient(e, index)}/>

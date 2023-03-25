@@ -27,11 +27,12 @@ const Login = () => {
             });
 
             const data = await response.json()
+            console.log(data)
             setCookies("access-token", data.token)
             window.localStorage.setItem("userId", data.userId)
             navigate('/')
         } catch (e) {
-            console.log(e)
+            console.log(e.code)
         }
 
     }
