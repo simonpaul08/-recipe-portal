@@ -8,8 +8,9 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    setCookies("access_token", "")
+    setCookies("access-token", "")
     window.localStorage.removeItem("userId")
+    
   }
 
   return (
