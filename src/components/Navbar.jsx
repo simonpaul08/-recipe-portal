@@ -14,12 +14,13 @@ const Navbar = () => {
   }
 
   return (
-    <div className='navbar'>
+    <div className='navbar px-4'>
       <div className="container py-2 d-flex justify-content-between align-items-center">
         <p className='mb-0 brand'>RECIPE</p>
-        <div>
-          {cookies['access-token'] && <Link to="/createRecipe" className='btn btn-warning mx-2'>Create Recipe</Link>}
-          { cookies['access-token'] ? <button className='btn btn-dark' onClick={handleLogout}>Logout</button> : <Link to="/auth" className='btn btn-primary'>Login</Link>}
+        <div className='nav-items'>
+          <Link to="/saved" className='nav-item mx-2'>Saved</Link>
+          <Link to="/profile" className='nav-item mx-2'>Profile</Link>
+          <Link to="/auth" className='nav-item mx-2 nav-btn py-2 px-3'>Login</Link>
         </div>
 
       </div>

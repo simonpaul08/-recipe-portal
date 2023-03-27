@@ -1,15 +1,15 @@
 import Main from '../components/Main';
-import SideBar from '../components/SideBar';
+import Navbar from '../components/Navbar';
 
 const Home = () => {
 
 
 
   return (
-    <div className='home'>
-        <SideBar /> 
-        <Main />
-    </div>
+    <>
+      <Main />
+    </>
+
   )
 }
 

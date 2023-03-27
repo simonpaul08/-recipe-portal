@@ -19,7 +19,7 @@ const AllRecipes = () => {
     if (recipes.length === 0) return <Loader />
 
     return (
-        <div className="mt-4 py-3 container d-flex justify-content-between align-items-center">
+        <div className="py-3 container d-flex justify-content-between align-items-center">
             {recipes?.map(recipe => {
                 return <RecipeCard recipe={recipe} key={recipe._id} />
             })}

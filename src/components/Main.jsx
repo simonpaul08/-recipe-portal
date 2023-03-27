@@ -6,7 +6,7 @@ const Main = () => {
 
     return (
         <div className='main'>
-            <div className="main__header py-4 px-3 d-flex justify-content-center align-items-center mb-4">
+            <div className="main__header py-2 px-3 d-flex justify-content-center align-items-center mb-3">
                 <SearchBar />
             </div>
             <AllRecipes />
