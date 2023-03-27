@@ -18,6 +18,8 @@ const Recipe = () => {
             });
             const data = await response.json();
             setRecipe(data)
+
+            const user = await fetch(``)
         }
 
         fetchRecipe();
