@@ -189,9 +189,6 @@ li {
 /* main */
 .main {
     flex: 1;
-    height: 100dvh;
-    overflow-x: hidden;
-    overflow-y: auto;
     background-color: #CBE4DE;
 }
 .main__header {
@@ -221,3 +218,24 @@ li {
     align-items: center;
 }
 
+/* profile */
+.profile__container {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #f6f6f6;
+    border-radius: 8px;
+}
+
+.recipe-list-card {
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+}
+
+.recipe-option {
+    cursor: pointer;
+    color: #2C3333;
+}
+.recipe-option:hover {
+    color: #0E8388;
+}
