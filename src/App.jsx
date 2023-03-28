@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Auth from './pages/Auth'
 import CreateRecipe from './pages/CreateRecipe'
 import Home from './pages/Home'
+import Profile from './pages/Profile'
 import Recipe from './pages/Recipe'
 import Saved from './pages/Saved'
 import { ProtectedRoutes } from './protected/ProtectedRoutes'
@@ -20,6 +21,7 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path='/createRecipe' element={<CreateRecipe />} />
           <Route path='/saved' element={<Saved />}/>
+          <Route path='/profile' element={<Profile />} />
         </Route>
       </Routes>
     </>

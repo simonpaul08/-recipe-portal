@@ -9,9 +9,9 @@ const Auth = () => {
 
 
   return (
-    <div className="auth-container">
+    <div className="auth-container py-5">
         <SwitchTab tab={tab} setTab={setTab}/>
-        {tab ? <Register /> : <Login />}
+        {tab ? <Login /> : <Register />}
     </div>
   )
 }

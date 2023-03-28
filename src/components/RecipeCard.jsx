@@ -9,8 +9,8 @@ const RecipeCard = ({ recipe }) => {
                 {/* <img src={Pasta} alt="image" className='image'/> */}
             </div>
             <div className="card-body">
-                <h3 className="card-title mb-3">box</h3>
-                <p className="card-text mb-3">Cooking Time - {recipe.cookingTime} Minutes</p>
+                <h3 className="card-title mb-2">{recipe.name}</h3>
+                <p className="card-text mb-2 cookingTime">Cooking Time - {recipe.cookingTime} Minutes</p>
             </div>
         </Link>
     )
