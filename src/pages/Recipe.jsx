@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Pasta from '../assets/pasta.png';
+import Pasta from '../assets/pasta_full.jpg';
 import Loader from '../components/Loader';
 
 const Recipe = () => {
     const { id } = useParams();
     const [recipe, setRecipe] = useState()
+    const [user, setUser] = useState()
 
     useEffect(() => {
         const fetchRecipe = async () => {
@@ -19,7 +20,9 @@ const Recipe = () => {
             const data = await response.json();
             setRecipe(data)
 
-            const user = await fetch(``)
+            const user = await fetch(`http://localhost:3001/auth/user/${data.userOwner}`)
+            const userData = await user.json();
+            setUser(userData)
         }
 
         fetchRecipe();
@@ -28,15 +31,22 @@ const Recipe = () => {
     if (!recipe) return <Loader />
 
     return (
-        <div className='recipe_container py-4 px-2 mt-4'>
-            <img src={Pasta} alt="pasta" className='recipe_image mb-4' />
+        <div className='recipe_container p-2 mt-4 mb-4'>
+            <img src={Pasta} alt="pasta" className='recipe_image mb-3' />
+            <div className='px-3 py-2'>
+                <div className='d-flex justify-content-between align-items-center mb-3'>
+                    <h3 className='mb-0'>{recipe.name}</h3>
+                    <p className='mb-0'><i className="fa-solid fa-user me-2"></i>{user ? user.username : "unknown"}</p>
+                </div>
+                <p className='cookingTime'>Cooking Time -- {recipe.cookingTime} minutes</p>
+                <p className='mb-3'>{recipe.description}</p>
+                <p className='fw-bold fs-5 mb-2'>Ingredients</p>
+                <ul className='ingredients mb-3 p-0'>
+                    {recipe.ingredients.map((i, index) => <li key={index} className="ingredient mb-2"><i className="fa-solid fa-arrow-right me-2"></i>{i}</li>)}
+                </ul>
 
-            <h3>{recipe.name}</h3>
-            <p>{recipe.cookingTime}</p>
-            <ul className='ingredients mb-3'>
-                {recipe.ingredients.map((i, index) => <li key={index}>{i}</li>)}
-            </ul>
-            <p>{recipe.description}</p>
+            </div>
+
         </div>
     )
 }
