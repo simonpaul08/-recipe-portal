@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 
-const Login = () => {
+const Login = ({ success, setSuccess }) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -11,18 +11,21 @@ const Login = () => {
     const [cookies, setCookies] = useCookies()
     const navigate = useNavigate()
 
-    const { login } = useAuthContext()
+    const { login, setCurrentUser } = useAuthContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         setError('')
+        setSuccess('')
 
         try {
             const response = await login(username, password);
             const data = response.data
-            setCookies('access-token', data.token)
-            window.localStorage.setItem("userId", data.userId)
+            console.log(data)
+            setCookies("access-token", data.token)
+            window.localStorage.setItem("userId", data.user._id)
+            setCurrentUser(data.user)
             navigate('/')
         } catch (e) {
             console.log(e.response.data)
@@ -35,6 +38,9 @@ const Login = () => {
         <form className='form p-4' onSubmit={handleSubmit}>
             {error.length !== 0 && <div className="alert alert-danger mb-3" role="alert">
                 {error}
+            </div>}
+            {success.length !== 0 && <div className="alert alert-success mb-3" role="alert">
+                {success}
             </div>}
             <h3 className='mb-4 text-center'>Login</h3>
             <div className='mb-3'>

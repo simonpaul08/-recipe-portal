@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useAuthContext } from '../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
 
-const Register = () => {
+
+const Register = ({ setSuccess, setTab }) => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
-    const navigate = useNavigate()
 
     const { signup } = useAuthContext()
 
@@ -22,6 +20,7 @@ const Register = () => {
             const response = await signup(username, password);
             const data = response.data
             setSuccess(data.message)
+            setTab(true)
         } catch (e) {
             console.log(e.response.data)
             setError(e.response.data)
@@ -33,9 +32,6 @@ const Register = () => {
         <form className='form p-4' onSubmit={handleSubmit}>
             {error.length !== 0  && <div className="alert alert-danger mb-3" role="alert">
                 {error}
-            </div>}
-            {success.length !== 0  && <div className="alert alert-success mb-3" role="alert">
-                {success}
             </div>}
             <h3 className='mb-4 text-center'>Register</h3>
             <div className='mb-3'>
