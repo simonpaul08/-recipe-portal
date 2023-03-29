@@ -19,7 +19,7 @@ const Navbar = () => {
           {cookies['access-token'] && <Link to="/saved" className='nav-item mx-2'>Saved</Link>}
           {cookies['access-token'] && <Link to="/profile" className='nav-item mx-2'>Profile</Link>}
           {cookies['access-token'] ? <Link className='nav-item mx-2 nav-btn' onClick={handleLogout}>Logout <i className="fa-solid fa-right-from-bracket ms-1"></i></Link>
-          : <Link to="/auth" className='nav-item mx-2 nav-btn'>Login <i class="fa-solid fa-user ms-1"></i></Link>}
+          : <Link to="/auth" className='nav-item mx-2 nav-btn'>Login <i className="fa-solid fa-user ms-1"></i></Link>}
 
         </div>
 

@@ -8,7 +8,6 @@ const AuthContext = createContext()
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthProvdider = ({ children }) => {
-    const [cookies, setCookies] = useCookies(["access-token"])
     const [currentUserId, setCurrentUserId] = useState()
 
     const login = (username, password) => {
