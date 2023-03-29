@@ -1,31 +1,21 @@
 import React, { useState } from 'react'
+import { useAuthContext } from '../context/AuthContext'
 
 const Register = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    const { signup } = useAuthContext()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        let item = {
-            username,
-            password
-        }
-
         try {
-            const response = await fetch('http://localhost:3001/auth/register', {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                body: JSON.stringify(item)
-            });
-
+            const response = await signup(username, password);
             const data = await response.json()
-            console.log(data)
-        } catch (e) {
-            console.log(e)
+        }catch(e){
+            console.log(e.response.data)
         }
 
     }

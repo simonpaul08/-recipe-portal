@@ -1,40 +1,26 @@
 import React, { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext'
 
 const Login = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [cookies, setCookies] = useCookies(["access-token"])
     const navigate = useNavigate()
+
+    const { login } = useAuthContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        let item = {
-            username,
-            password
-        }
-
         try {
-            const response = await fetch('http://localhost:3001/auth/login', {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/json"
-                },
-                body: JSON.stringify(item)
-            });
-
+            const response = await login(username, password);
             const data = await response.json()
-            console.log(data)
-            setCookies("access-token", data.token)
-            window.localStorage.setItem("userId", data.userId)
-            navigate('/')
-        } catch (e) {
-            console.log(e.code)
+            // console.log(data)
+        }catch(e) {
+            console.log(e.response.data)
         }
-
+        
     }
 
     return (
