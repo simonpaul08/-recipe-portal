@@ -1,13 +1,28 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 import RecipeListCard from "../components/RecipeListCard"
 import { useAuthContext } from "../context/AuthContext"
+import { useGetUserId } from "../hooks/useGetUserId"
+import Loader from '../components/Loader'
 
 const Profile = () => {
 
-  const { currentUser } = useAuthContext()
+  const userId = useGetUserId()
   const [recipes, setRecipes] = useState()
+  const { currentUser } = useAuthContext()
 
-  
+  useEffect(() => {
+
+    const fetchRecipes = async () => {
+      const response = await axios.post(`http://localhost:3001/recipes/user/${userId}`)
+      setRecipes(response.data)
+    }
+
+    fetchRecipes()
+
+  }, [])
+
+
 
   return (
     <div className='py-3 profile__container px-4 '>
@@ -17,10 +32,9 @@ const Profile = () => {
       </div>
       <hr className="m-0 mb-3" />
 
-      <div className="profile-body py-3">
-        <RecipeListCard />
-        <RecipeListCard />
-      </div>
+      {recipes ? <div className="profile-body py-3">
+        {recipes && recipes.map(r => <RecipeListCard key={r._id} recipe={r}/>)}
+      </div> : <Loader />}
     </div>
   )
 }

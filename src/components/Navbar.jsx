@@ -1,14 +1,17 @@
 import React from 'react'
 import { useCookies } from 'react-cookie'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext'
 
 const Navbar = () => {
 
   const [cookies, setCookies] = useCookies()
+  const { setCurrentUser } = useAuthContext()
 
   const handleLogout = () => {
     setCookies("access-token", "")
     window.localStorage.removeItem("userId")
+    setCurrentUser()
   }
 
   return (
