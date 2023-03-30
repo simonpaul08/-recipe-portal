@@ -10,6 +10,15 @@ const Profile = () => {
   const userId = useGetUserId()
   const [recipes, setRecipes] = useState()
   const { currentUser } = useAuthContext()
+  const [alert, setAlert] = useState('')
+
+  const handleDeleteRecipe = async (id) => {
+    setAlert('')
+    const deleteRecipe = await axios.delete(`http://localhost:3001/recipes/recipe/delete/${id}`)
+    const data = deleteRecipe.data
+    setRecipes(data.recipes)
+    setAlert(data.message)
+  }
 
   useEffect(() => {
 
@@ -26,6 +35,10 @@ const Profile = () => {
 
   return (
     <div className='py-3 profile__container px-4 '>
+      {alert.length !== 0 && <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {alert}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => setAlert('')}></button>
+      </div>}
       <div className="profile-header py-2 px-1 d-flex justify-content-between align-items-center mb-1">
         <p className='mb-0'>My Account</p>
         <p className='mb-0'><i className="fa-solid fa-user me-2"></i>{currentUser && currentUser.username}</p>
@@ -33,7 +46,7 @@ const Profile = () => {
       <hr className="m-0 mb-3" />
 
       {recipes ? <div className="profile-body py-3">
-        {recipes && recipes.map(r => <RecipeListCard key={r._id} recipe={r}/>)}
+        {recipes && recipes.map(r => <RecipeListCard key={r._id} recipe={r} id={r._id} handleDeleteRecipe={handleDeleteRecipe} />)}
       </div> : <Loader />}
     </div>
   )

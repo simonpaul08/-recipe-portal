@@ -22,7 +22,6 @@ const Login = ({ success, setSuccess }) => {
         try {
             const response = await login(username, password);
             const data = response.data
-            console.log(data)
             setCookies("access-token", data.token)
             window.localStorage.setItem("userId", data.user._id)
             setCurrentUser(data.user)
