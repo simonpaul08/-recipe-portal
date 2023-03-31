@@ -44,6 +44,10 @@ const Recipe = () => {
                 <ul className='ingredients mb-3 p-0'>
                     {recipe.ingredients.map((i, index) => <li key={index} className="ingredient mb-2"><i className="fa-solid fa-arrow-right me-2"></i>{i}</li>)}
                 </ul>
+                <p className='fw-bold fs-5 mb-2'>Instructions</p>
+                <ul className='ingredients mb-3 p-0'>
+                    {recipe.instruction.map((i, index) => <li key={index} className="ingredient mb-2"><i className="fa-solid fa-arrow-right me-2"></i>{i}</li>)}
+                </ul>
 
             </div>
 

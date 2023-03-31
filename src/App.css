@@ -74,6 +74,11 @@ li {
     color: #2E4F4F;
 }
 
+.btn-outlined {
+    border: 1px solid #2E4F4F;
+    color: #2E4F4F;
+}
+
 
 /* create recipe */
 .recipe_container {
@@ -81,9 +86,6 @@ li {
     justify-content: center;
 }
 
-.recipe-form {
-    margin-top: 50px;
-}
 
 
 /* loader */
@@ -240,5 +242,19 @@ li {
 }
 .recipe-option:hover {
     color: #0E8388;
+}
+.btn-add-recipe {
+    color: #f6f6f6;
+    background-color: #2E4F4F;
+    border-radius: 4px !important;
+    width: 500px;
+    text-align: center;
+}
+
+.btn-add-recipe:hover,
+.btn-add-recipe:active,
+.btn-add-recipe:visited {
+    color: #f6f6f6;
+    background-color: #2E4F4F;
 }
 
