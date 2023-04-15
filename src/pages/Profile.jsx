@@ -1,25 +1,26 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import RecipeListCard from "../components/RecipeListCard"
-import { useAuthContext } from "../context/AuthContext"
-import { useGetUserId } from "../hooks/useGetUserId"
 import Loader from '../components/Loader'
 import { Link } from "react-router-dom"
+import { useGetUserId } from "../hooks/useGetUserId"
+import { useAuthContext } from "../context/AuthContext"
 
 const Profile = () => {
-
-  const userId = useGetUserId()
   const [recipes, setRecipes] = useState()
-  const { currentUser } = useAuthContext()
+  const currentUser = useAuthContext()
+  const userId = useGetUserId()
   const [alert, setAlert] = useState('')
 
   const handleDeleteRecipe = async (id) => {
     setAlert('')
-    console.log(userId)
-    const deleteRecipe = await axios.delete(`${import.meta.env.VITE_API_KEY}/recipes/recipe/delete/${id}`)
-    const data = deleteRecipe.data
-    setRecipes(data.recipes)
-    setAlert(data.message)
+    try {
+      const deleteRecipe = await axios.delete(`${import.meta.env.VITE_API_KEY}/recipes/recipe/delete/${id}`)
+      setAlert(deleteRecipe.data)
+      setRecipes(recipes.filter(recipe => recipe._id !== id))
+    }catch(e){
+      console.log(e.response.data)
+    }
   }
 
   useEffect(() => {
@@ -37,9 +38,9 @@ const Profile = () => {
 
   return (
     <div className='py-3 profile__container px-4 '>
-      {alert.length !== 0 && <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {alert.length !== 0 && <div className="alert alert-success alert-dismissible fade show" role="alert">
         {alert}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => setAlert('')}></button>
+        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => setAlert('')}></button>
       </div>}
       <div className="profile-header py-2 px-1 d-flex justify-content-between align-items-center mb-1">
         <p className="mb-0">My Account</p>

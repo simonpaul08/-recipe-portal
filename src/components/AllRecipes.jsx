@@ -33,7 +33,7 @@ const AllRecipes = () => {
         fetchRecipes()
     }, [])
 
-    if (recipes.length && isLoading === 0) return <Loader />
+    if (recipes.length === 0 && isLoading) return <Loader />
 
     return (
         <>
