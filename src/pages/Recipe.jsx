@@ -10,7 +10,7 @@ const Recipe = () => {
 
     useEffect(() => {
         const fetchRecipe = async () => {
-            const response = await fetch(`http://localhost:3001/recipes/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/recipes/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': "application/json",
@@ -20,7 +20,7 @@ const Recipe = () => {
             const data = await response.json();
             setRecipe(data)
 
-            const user = await fetch(`http://localhost:3001/auth/user/${data.userOwner}`)
+            const user = await fetch(`${import.meta.env.VITE_API_KEY}/auth/user/${data.userOwner}`)
             const userData = await user.json();
             setUser(userData)
         }

@@ -50,7 +50,7 @@ const CreateRecipe = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/recipes', recipe)
+            const response = await axios.post(`${import.meta.env.VITE_API_KEY}/recipes`, recipe)
             navigate('/profile')
         } catch (e) {
             console.error(e)

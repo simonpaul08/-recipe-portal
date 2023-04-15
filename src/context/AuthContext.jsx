@@ -11,11 +11,11 @@ export const AuthProvdider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState()
     const userId  = useGetUserId()
     const login = (username, password) => {
-        return axios.post('http://localhost:3001/auth/login', { username, password });
+        return axios.post(`${import.meta.env.VITE_API_KEY}/auth/login`, { username, password });
     }
 
     const signup = (username, password) => {
-        return axios.post('http://localhost:3001/auth/register', { username, password })
+        return axios.post(`${import.meta.env.VITE_API_KEY}/auth/register`, { username, password })
     }
 
     let value = {
@@ -28,7 +28,7 @@ export const AuthProvdider = ({ children }) => {
     useEffect(() => {
 
         const fetchUser = async () => {
-            const response = await axios.get(`http://localhost:3001/auth/user/${userId}`)
+            const response = await axios.get(`${import.meta.env.VITE_API_KEY}/auth/user/${userId}`)
             setCurrentUser(response.data)
         }
 

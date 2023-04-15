@@ -16,7 +16,7 @@ const Profile = () => {
   const handleDeleteRecipe = async (id) => {
     setAlert('')
     console.log(userId)
-    const deleteRecipe = await axios.delete(`http://localhost:3001/recipes/recipe/delete/${id}`)
+    const deleteRecipe = await axios.delete(`${import.meta.env.VITE_API_KEY}/recipes/recipe/delete/${id}`)
     const data = deleteRecipe.data
     setRecipes(data.recipes)
     setAlert(data.message)
@@ -25,7 +25,7 @@ const Profile = () => {
   useEffect(() => {
 
     const fetchRecipes = async () => {
-      const response = await axios.post(`http://localhost:3001/recipes/user/${userId}`)
+      const response = await axios.post(`${import.meta.env.VITE_API_KEY}/recipes/user/${userId}`)
       setRecipes(response.data)
     }
 

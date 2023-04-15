@@ -19,7 +19,7 @@ const AllRecipes = () => {
             setIsLoading(true)
 
             try {
-                const response = await axios.get('http://localhost:3001/recipes')
+                const response = await axios.get(`${import.meta.env.VITE_API_KEY}/recipes`)
                 const data = response.data
                 setRecipes(data)
             } catch (e) {
