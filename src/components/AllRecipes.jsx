@@ -38,13 +38,10 @@ const AllRecipes = () => {
     return (
         <>
             {alert.length !== 0 && <h3 className='text-center'>{alert}</h3>}
-            <div className="py-3 container d-flex justify-content-between align-items-center">
+            <div className="py-3 container row mx-auto">
                 {recipes?.map(recipe => {
                     return <RecipeCard recipe={recipe} key={recipe._id} />
                 })}
-
-                {recipes.length <= 2 && <div className='card mb-2 mx-2' style={{ border: 'none' }}>
-                </div>}
             </div>
         </>
 

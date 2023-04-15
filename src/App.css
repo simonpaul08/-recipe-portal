@@ -115,7 +115,6 @@ li {
 /* card */
 .card {
     display: block;
-    width: 30%;
     transition: all 0.3s ease;
     background-color: #f6f6f6;
     color: #333;
@@ -141,6 +140,12 @@ li {
     font-size: 14px;
 }
 
+.recipe-card-title {
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 /* recipe */
 .recipe_container {
@@ -148,7 +153,6 @@ li {
     margin: 0 auto;
     background-color: #f6f6f6;
     border-radius: 8px;
-    box-sizing: 0 0 2px 4px rgba(0,0,0,.12);
     flex-direction: column;
 }
 

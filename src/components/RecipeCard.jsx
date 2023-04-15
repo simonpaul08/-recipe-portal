@@ -4,13 +4,15 @@ import Pasta from '../assets/pasta_full.jpg';
 
 const RecipeCard = ({ recipe }) => {
     return (
-        <Link to={recipe._id} className="card mb-2 mx-2">
-            <div className="card-header p-2" style={{ backgroundImage: `url(${Pasta})` }}>
-                {/* <img src={Pasta} alt="image" className='image'/> */}
-            </div>
-            <div className="card-body">
-                <h3 className="card-title mb-2">{recipe.name}</h3>
-                <p className="card-text mb-2 cookingTime">Cooking Time - {recipe.cookingTime} Minutes</p>
+        <Link to={recipe._id} className="col-4 mb-4 justify-content-center">
+            <div className='card'>
+                <div className="card-header p-2" style={{ backgroundImage: `url(${Pasta})` }}>
+                    {/* <img src={Pasta} alt="image" className='image'/> */}
+                </div>
+                <div className="card-body">
+                    <h3 className="card-title mb-2 recipe-card-title">{recipe.name}</h3>
+                    <p className="card-text mb-2 cookingTime">Cooking Time - {recipe.cookingTime} Minutes</p>
+                </div>
             </div>
         </Link>
     )

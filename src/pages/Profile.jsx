@@ -15,6 +15,7 @@ const Profile = () => {
 
   const handleDeleteRecipe = async (id) => {
     setAlert('')
+    console.log(userId)
     const deleteRecipe = await axios.delete(`http://localhost:3001/recipes/recipe/delete/${id}`)
     const data = deleteRecipe.data
     setRecipes(data.recipes)

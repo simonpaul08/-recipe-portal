@@ -36,7 +36,7 @@ const Recipe = () => {
             <div className='px-3 py-2'>
                 <div className='d-flex justify-content-between align-items-center mb-3'>
                     <h3 className='mb-0'>{recipe.name}</h3>
-                    <p className='mb-0'><i className="fa-solid fa-user me-2"></i>{user ? user.username : "unknown"}</p>
+                    <p className='mb-0'><i className="fa-solid fa-user mx-2"></i>{user ? user.username : "unknown"}</p>
                 </div>
                 <p className='cookingTime'>Cooking Time -- {recipe.cookingTime} minutes</p>
                 <p className='mb-3'>{recipe.description}</p>
