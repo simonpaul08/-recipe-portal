@@ -4,7 +4,7 @@ import Pasta from '../assets/pasta_full.jpg';
 
 const RecipeCard = ({ recipe }) => {
     return (
-        <Link to={recipe._id} className="col-4 mb-4 justify-content-center">
+        <Link to={recipe._id} className="col-md-4 col-lg-3 col-sm-4 mb-4 justify-content-center">
             <div className='card'>
                 <div className="card-header p-2" style={{ backgroundImage: `url(${Pasta})` }}>
                     {/* <img src={Pasta} alt="image" className='image'/> */}

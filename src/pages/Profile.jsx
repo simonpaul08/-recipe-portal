@@ -8,7 +8,7 @@ import { useAuthContext } from "../context/AuthContext"
 
 const Profile = () => {
   const [recipes, setRecipes] = useState()
-  const currentUser = useAuthContext()
+  const { currentUser } = useAuthContext()
   const userId = useGetUserId()
   const [alert, setAlert] = useState('')
 
